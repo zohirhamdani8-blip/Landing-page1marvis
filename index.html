@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marvis Landing Page</title>
+<style>
+ body { font-family: 'Tahoma', sans-serif; margin: 0; background:#fafafa; }
+ .hero { background: linear-gradient(135deg,#0f0f0f,#4b0082); color:#fff; padding:60px 20px; text-align:center; position:relative; overflow:hidden; }
+ .badge { position:absolute; top:20px; left:20px; background:#e63946; padding:10px 18px; border-radius:10px; font-weight:bold; font-size:16px; }
+ .hero h1 { font-size:32px; margin-bottom:10px; animation: fadeIn 1s ease-in-out; }
+ .hero p { opacity:0.95; animation: fadeIn 1.5s ease-in-out; }
+ .hero img { max-width:300px; margin-top:20px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.35); animation: float 3s infinite ease-in-out; }
+ @keyframes float { 0%{transform:translateY(0);} 50%{transform:translateY(-10px);} 100%{transform:translateY(0);} }
+ @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+ .container{max-width:1000px;margin:0 auto;padding:20px;}
+ .section { max-width:700px; margin:25px auto; background:#fff; padding:25px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.06); }
+ .price-box { text-align:center; }
+ .old-price { text-decoration:line-through; color:#999; font-size:18px; }
+ .new-price { font-size:32px; color:#e63946; font-weight:bold; margin-top:5px; }
+ .timer { font-size:18px; color:#e63946; font-weight:bold; margin-top:10px; }
+ .gallery img { max-width:250px; margin:10px; border-radius:15px; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:0.3s; }
+ .gallery img:hover { transform:scale(1.03); }
+ .reviews { font-size:18px; line-height:1.8; }
+ .star { color:#ffc107; font-size:22px; }
+ form h2 { text-align:center; margin-bottom:15px; }
+ input, textarea { width:100%; padding:14px; margin-bottom:12px; border-radius:12px; border:1px solid #ddd; font-size:17px; box-sizing:border-box; }
+ .btn { display:inline-block;padding:12px 18px;border-radius:12px;border:none;background:#e63946;color:#fff;font-size:16px;cursor:pointer;text-decoration:none;text-align:center; }
+ .btn.whatsapp { background:#25D366;margin-top:10px;display:block; }
+ .footer { text-align:center; padding:25px; color:#666; font-size:14px; }
+ /* responsive */
+ @media (max-width:600px){ .hero h1{font-size:24px} .gallery img{max-width:45%} }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="hero">
+  <div class="badge">الأكثر مبيعًا 🔥</div>
+  <h1>✨ معجون الأسنان الفاخر Marvis</h1>
+  <p>جودة إيطالية • نكهة قوية • نتائج مذهلة</p>
+  <img src="marvis1.png" alt="Marvis" />
+</div>
+
+<div class="section price-box">
+  <p class="old-price">السعر القديم: 3500 دج</p>
+  <p class="new-price">2600 دج فقط 🔥</p>
+  <p class="timer">⏳ العرض ينتهي خلال: <span id="countdown">06:00</span></p>
+</div>
+
+<div class="section gallery" style="text-align:center;">
+  <h2>📸 صور المنتج الحقيقية</h2>
+  <img src="marvis1.png" alt="Marvis Image 1">
+  <img src="marvis2.png" alt="Marvis Image 2">
+</div>
+
+<div class="section reviews">
+  <h2>آراء الزبائن ⭐⭐⭐⭐⭐</h2>
+  <p><span class="star">★★★★★</span> "منتج ممتاز، النكهة قوية ويدوم تأثيرها طويلاً" — سامي</p>
+  <p><span class="star">★★★★★</span> "وصل في يومين فقط والخدمة ممتازة" — كريم</p>
+  <p><span class="star">★★★★☆</span> "يعطي بياض ملحوظ من أول استعمال" — رانيا</p>
+</div>
+
+<div class="section desc">
+  <h2>لماذا MARVIS هو الأفضل؟</h2>
+  <ul>
+    <li>✔ نكهة قوية تدوم طويلاً</li>
+    <li>✔ تبييض فعّال للأسنان</li>
+    <li>✔ القضاء على رائحة الفم</li>
+    <li>✔ جودة إيطالية عالية</li>
+  </ul>
+</div>
+
+<div class="section">
+  <form id="orderForm" onsubmit="submitForm(event)">
+    <h2>أطلب الآن 🚚 الدفع عند الاستلام</h2>
+    <input type="text" id="name" placeholder="الاسم الكامل" required />
+    <input type="text" id="address" placeholder="الولاية + البلدية" required />
+    <input type="tel" id="phone" placeholder="رقم الهاتف" required />
+    <button class="btn" type="submit">تأكيد الطلب الآن</button>
+    <a class="btn whatsapp" href="https://wa.me/213655274687?text=مرحبا%2C%20أريد%20طلب%20معجون%20Marvis" target="_blank" rel="noopener">تواصل عبر واتساب</a>
+  </form>
+</div>
+
+<div class="footer">© 2025 صفحة هبوط Marvis — كل الحقوق محفوظة</div>
+</div>
+
+<script>
+function submitForm(e){
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if(!name||!phone){ alert('المرجو ملء الاسم ورقم الهاتف'); return; }
+  // opens WhatsApp with prefilled message including form details
+  const address = document.getElementById('address').value.trim();
+  const text = encodeURIComponent(`مرحبا، أريد طلب معجون Marvis.%0Aالاسم: ${name}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`);
+  window.open('https://wa.me/213655274687?text=' + text, '_blank');
+}
+
+// countdown
+let time = 360;
+const countdownEl = document.getElementById('countdown');
+setInterval(() => {
+  if (time <= 0) return;
+  time--;
+  let m = Math.floor(time / 60);
+  let s = time % 60;
+  countdownEl.textContent = `${m}:${s < 10 ? '0'+s : s}`;
+}, 1000);
+</script>
+
+</body>
+</html>
